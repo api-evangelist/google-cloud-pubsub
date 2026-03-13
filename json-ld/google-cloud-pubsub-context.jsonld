@@ -1,0 +1,28 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "gcloud": "https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#",
+    "Topic": "gcloud:Topic",
+    "Subscription": "gcloud:Subscription",
+    "PubsubMessage": "gcloud:PubsubMessage",
+    "name": "schema:name",
+    "labels": "schema:keywords",
+    "data": "schema:text",
+    "messageId": "schema:identifier",
+    "publishTime": "schema:datePublished",
+    "orderingKey": "schema:position",
+    "topic": "schema:isPartOf",
+    "pushEndpoint": "schema:url",
+    "ackDeadlineSeconds": "schema:duration",
+    "filter": "schema:query",
+    "messageRetentionDuration": "schema:duration",
+    "kmsKeyName": "schema:identifier",
+    "schemaSettings": {
+      "@id": "schema:DataFeed",
+      "@context": {
+        "schema": "schema:name",
+        "encoding": "schema:encodingFormat"
+      }
+    }
+  }
+}
