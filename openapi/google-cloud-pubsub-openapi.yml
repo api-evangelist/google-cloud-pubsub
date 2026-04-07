@@ -16,41 +16,41 @@ externalDocs:
   description: Google Cloud Pub/Sub Documentation
   url: https://cloud.google.com/pubsub/docs/reference/rest
 servers:
-- url: https://pubsub.googleapis.com/v1
-  description: Google Cloud Pub/Sub API v1
+  - url: https://pubsub.googleapis.com/v1
+    description: Google Cloud Pub/Sub API v1
 security:
-- oauth2: []
+  - oauth2: []
 tags:
-- name: Topics
-  description: Operations for managing Pub/Sub topics
-- name: Subscriptions
-  description: Operations for managing Pub/Sub subscriptions
-- name: Snapshots
-  description: Operations for managing Pub/Sub snapshots
-- name: Schemas
-  description: Operations for managing Pub/Sub schemas
+  - name: Topics
+    description: Operations for managing Pub/Sub topics
+  - name: Subscriptions
+    description: Operations for managing Pub/Sub subscriptions
+  - name: Snapshots
+    description: Operations for managing Pub/Sub snapshots
+  - name: Schemas
+    description: Operations for managing Pub/Sub schemas
 paths:
   /projects/{projectId}/topics:
     get:
       operationId: listTopics
-      summary: List topics
+      summary: Google Cloud Pub/Sub List topics
       description: Lists matching topics in the given project.
       tags:
-      - Topics
+        - Topics
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: pageSize
-        in: query
-        schema:
-          type: integer
-      - name: pageToken
-        in: query
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+        - name: pageToken
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -61,21 +61,21 @@ paths:
   /projects/{projectId}/topics/{topicId}:
     get:
       operationId: getTopic
-      summary: Get a topic
+      summary: Google Cloud Pub/Sub Get a topic
       description: Gets the configuration of a topic.
       tags:
-      - Topics
+        - Topics
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: topicId
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: topicId
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -85,21 +85,21 @@ paths:
                 $ref: '#/components/schemas/Topic'
     put:
       operationId: createTopic
-      summary: Create a topic
+      summary: Google Cloud Pub/Sub Create a topic
       description: Creates the given topic with the given name.
       tags:
-      - Topics
+        - Topics
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: topicId
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: topicId
+          in: path
+          required: true
+          schema:
+            type: string
       requestBody:
         required: true
         content:
@@ -115,42 +115,42 @@ paths:
                 $ref: '#/components/schemas/Topic'
     delete:
       operationId: deleteTopic
-      summary: Delete a topic
+      summary: Google Cloud Pub/Sub Delete a topic
       description: Deletes the topic with the given name.
       tags:
-      - Topics
+        - Topics
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: topicId
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: topicId
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
   /projects/{projectId}/topics/{topicId}:publish:
     post:
       operationId: publishMessages
-      summary: Publish messages
+      summary: Google Cloud Pub/Sub Publish messages
       description: Adds one or more messages to the topic.
       tags:
-      - Topics
+        - Topics
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: topicId
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: topicId
+          in: path
+          required: true
+          schema:
+            type: string
       requestBody:
         required: true
         content:
@@ -177,24 +177,24 @@ paths:
   /projects/{projectId}/subscriptions:
     get:
       operationId: listSubscriptions
-      summary: List subscriptions
+      summary: Google Cloud Pub/Sub List subscriptions
       description: Lists matching subscriptions in the given project.
       tags:
-      - Subscriptions
+        - Subscriptions
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: pageSize
-        in: query
-        schema:
-          type: integer
-      - name: pageToken
-        in: query
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+        - name: pageToken
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -205,21 +205,21 @@ paths:
   /projects/{projectId}/subscriptions/{subscriptionId}:
     get:
       operationId: getSubscription
-      summary: Get a subscription
+      summary: Google Cloud Pub/Sub Get a subscription
       description: Gets the configuration details of a subscription.
       tags:
-      - Subscriptions
+        - Subscriptions
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: subscriptionId
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subscriptionId
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -229,21 +229,21 @@ paths:
                 $ref: '#/components/schemas/Subscription'
     put:
       operationId: createSubscription
-      summary: Create a subscription
+      summary: Google Cloud Pub/Sub Create a subscription
       description: Creates a subscription to a given topic.
       tags:
-      - Subscriptions
+        - Subscriptions
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: subscriptionId
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subscriptionId
+          in: path
+          required: true
+          schema:
+            type: string
       requestBody:
         required: true
         content:
@@ -259,42 +259,42 @@ paths:
                 $ref: '#/components/schemas/Subscription'
     delete:
       operationId: deleteSubscription
-      summary: Delete a subscription
+      summary: Google Cloud Pub/Sub Delete a subscription
       description: Deletes an existing subscription.
       tags:
-      - Subscriptions
+        - Subscriptions
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: subscriptionId
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subscriptionId
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
   /projects/{projectId}/subscriptions/{subscriptionId}:pull:
     post:
       operationId: pullMessages
-      summary: Pull messages
+      summary: Google Cloud Pub/Sub Pull messages
       description: Pulls messages from the server.
       tags:
-      - Subscriptions
+        - Subscriptions
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: subscriptionId
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subscriptionId
+          in: path
+          required: true
+          schema:
+            type: string
       requestBody:
         required: true
         content:
@@ -320,21 +320,21 @@ paths:
   /projects/{projectId}/subscriptions/{subscriptionId}:acknowledge:
     post:
       operationId: acknowledgeMessages
-      summary: Acknowledge messages
+      summary: Google Cloud Pub/Sub Acknowledge messages
       description: Acknowledges the messages associated with the ack IDs in the request.
       tags:
-      - Subscriptions
+        - Subscriptions
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: subscriptionId
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: subscriptionId
+          in: path
+          required: true
+          schema:
+            type: string
       requestBody:
         required: true
         content:
@@ -352,24 +352,24 @@ paths:
   /projects/{projectId}/schemas:
     get:
       operationId: listSchemas
-      summary: List schemas
+      summary: Google Cloud Pub/Sub List schemas
       description: Lists schemas in a project.
       tags:
-      - Schemas
+        - Schemas
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: pageSize
-        in: query
-        schema:
-          type: integer
-      - name: pageToken
-        in: query
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+        - name: pageToken
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -379,20 +379,20 @@ paths:
                 $ref: '#/components/schemas/ListSchemasResponse'
     post:
       operationId: createSchema
-      summary: Create a schema
+      summary: Google Cloud Pub/Sub Create a schema
       description: Creates a schema in a project.
       tags:
-      - Schemas
+        - Schemas
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: schemaId
-        in: query
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: schemaId
+          in: query
+          schema:
+            type: string
       requestBody:
         required: true
         content:
@@ -446,9 +446,9 @@ components:
             encoding:
               type: string
               enum:
-              - ENCODING_UNSPECIFIED
-              - JSON
-              - BINARY
+                - ENCODING_UNSPECIFIED
+                - JSON
+                - BINARY
             firstRevisionId:
               type: string
             lastRevisionId:
@@ -525,9 +525,9 @@ components:
         state:
           type: string
           enum:
-          - STATE_UNSPECIFIED
-          - ACTIVE
-          - RESOURCE_ERROR
+            - STATE_UNSPECIFIED
+            - ACTIVE
+            - RESOURCE_ERROR
     PubsubMessage:
       type: object
       properties:
@@ -564,9 +564,9 @@ components:
         type:
           type: string
           enum:
-          - TYPE_UNSPECIFIED
-          - PROTOCOL_BUFFER
-          - AVRO
+            - TYPE_UNSPECIFIED
+            - PROTOCOL_BUFFER
+            - AVRO
         definition:
           type: string
         revisionId:
