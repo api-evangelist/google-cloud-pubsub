@@ -21,14 +21,12 @@ servers:
 security:
   - oauth2: []
 tags:
-  - name: Topics
-    description: Operations for managing Pub/Sub topics
-  - name: Subscriptions
-    description: Operations for managing Pub/Sub subscriptions
-  - name: Snapshots
-    description: Operations for managing Pub/Sub snapshots
   - name: Schemas
     description: Operations for managing Pub/Sub schemas
+  - name: Subscriptions
+    description: Operations for managing Pub/Sub subscriptions
+  - name: Topics
+    description: Operations for managing Pub/Sub topics
 paths:
   /projects/{projectId}/topics:
     get:
