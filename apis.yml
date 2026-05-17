@@ -34,7 +34,7 @@ common:
     url: https://cloud.google.com/pubsub/docs/quickstarts
   - type: Pricing
     url: https://cloud.google.com/pubsub/pricing
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/google-cloud-pubsub-context.jsonld
   - type: Integrations
     url: https://cloud.google.com/marketplace
