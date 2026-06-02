@@ -1,0 +1,577 @@
+asyncapi: 2.6.0
+info:
+  title: Google Cloud Pub/Sub Messaging Surface
+  version: v1
+  description: >-
+    Google Cloud Pub/Sub is a fully managed, real-time messaging service for
+    sending and receiving messages between independent applications. This
+    AsyncAPI document describes Pub/Sub's event-driven surface area: the
+    PubsubMessage envelope, push subscription HTTP delivery, pull subscription
+    delivery, BigQuery and Cloud Storage export subscriptions, and the schema
+    registry (Avro and Protocol Buffer) used to govern published payloads.
+  contact:
+    name: Google Cloud
+    url: https://cloud.google.com/pubsub
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+externalDocs:
+  description: Google Cloud Pub/Sub Documentation
+  url: https://cloud.google.com/pubsub/docs
+defaultContentType: application/json
+servers:
+  pubsub:
+    url: pubsub.googleapis.com
+    protocol: https
+    description: Google Cloud Pub/Sub service endpoint for publishing and pulling messages.
+    security:
+      - googleOAuth2: []
+  push-endpoint:
+    url: '{pushEndpoint}'
+    protocol: https
+    description: >-
+      Subscriber-owned HTTPS endpoint that receives push deliveries from a
+      Pub/Sub push subscription via HTTP POST.
+    variables:
+      pushEndpoint:
+        description: Fully qualified HTTPS URL configured on the push subscription.
+        default: https://example.com/pubsub/push
+channels:
+  projects/{projectId}/topics/{topicId}:
+    description: >-
+      A Pub/Sub topic. Publishers send messages to a topic; the messages are
+      then delivered to all subscriptions attached to that topic.
+    parameters:
+      projectId:
+        description: The Google Cloud project ID that owns the topic.
+        schema:
+          type: string
+      topicId:
+        description: The Pub/Sub topic ID.
+        schema:
+          type: string
+    publish:
+      operationId: publishMessage
+      summary: Publish a message to a topic
+      description: >-
+        Publishers send a PubsubMessage to a topic. A message must contain
+        either the data field or at least one attribute. The data field carries
+        the payload (base64-encoded on the wire) up to 10 MB.
+      bindings:
+        http:
+          type: request
+          method: POST
+      message:
+        $ref: '#/components/messages/PubsubMessage'
+  projects/{projectId}/subscriptions/{subscriptionId}:pull:
+    description: >-
+      A pull subscription. Subscribers call the Pub/Sub API to pull batches of
+      messages and then acknowledge them with the returned ackId.
+    parameters:
+      projectId:
+        description: The Google Cloud project ID that owns the subscription.
+        schema:
+          type: string
+      subscriptionId:
+        description: The subscription ID.
+        schema:
+          type: string
+    subscribe:
+      operationId: pullMessage
+      summary: Pull messages from a subscription
+      description: >-
+        Subscribers pull messages from a subscription. Each ReceivedMessage
+        wraps a PubsubMessage with an ackId used to acknowledge delivery and a
+        deliveryAttempt counter when dead letter policies are configured.
+      message:
+        $ref: '#/components/messages/ReceivedMessage'
+  '{pushEndpoint}':
+    description: >-
+      A subscriber-owned HTTPS endpoint registered as the pushConfig.pushEndpoint
+      of a push subscription. Pub/Sub POSTs a PushNotification envelope to this
+      URL for each delivered message.
+    parameters:
+      pushEndpoint:
+        description: Fully qualified HTTPS URL configured on the push subscription.
+        schema:
+          type: string
+          format: uri
+    bindings:
+      http:
+        type: request
+        method: POST
+    subscribe:
+      operationId: receivePushDelivery
+      summary: Receive a push delivery from a Pub/Sub subscription
+      description: >-
+        Pub/Sub delivers each message as an HTTP POST with a JSON body
+        containing the message envelope, the subscription resource name, and
+        an optional deliveryAttempt. The endpoint must respond with an HTTP
+        success status (200, 201, 202, 204, or 102) to acknowledge the
+        message; any other status code (or timeout) triggers redelivery. When
+        OIDC authentication is configured on the push subscription, Pub/Sub
+        includes a JWT in the Authorization header.
+      message:
+        $ref: '#/components/messages/PushNotification'
+  projects/{projectId}/subscriptions/{subscriptionId}:bigquery:
+    description: >-
+      A BigQuery subscription. Pub/Sub writes incoming messages directly to a
+      BigQuery table using the BigQuery Storage Write API. No subscriber code
+      is required.
+    parameters:
+      projectId:
+        description: The Google Cloud project ID that owns the subscription.
+        schema:
+          type: string
+      subscriptionId:
+        description: The subscription ID.
+        schema:
+          type: string
+    subscribe:
+      operationId: deliverToBigQuery
+      summary: Deliver a message to a BigQuery table row
+      description: >-
+        Pub/Sub appends one row per message to the configured BigQuery table.
+        With write_metadata enabled, the row includes the subscription_name,
+        message_id, publish_time, data, and attributes columns. With
+        use_topic_schema enabled, the message data is mapped to columns
+        according to the topic's Avro or Protocol Buffer schema; with
+        use_table_schema, the BigQuery table schema is used instead.
+      message:
+        $ref: '#/components/messages/BigQueryRow'
+  projects/{projectId}/subscriptions/{subscriptionId}:cloudstorage:
+    description: >-
+      A Cloud Storage subscription. Pub/Sub batches messages and writes them
+      as objects to a Cloud Storage bucket in text or Avro format.
+    parameters:
+      projectId:
+        description: The Google Cloud project ID that owns the subscription.
+        schema:
+          type: string
+      subscriptionId:
+        description: The subscription ID.
+        schema:
+          type: string
+    subscribe:
+      operationId: deliverToCloudStorage
+      summary: Deliver a batch of messages to a Cloud Storage object
+      description: >-
+        Pub/Sub writes batches of messages to objects in the configured bucket.
+        A new file is created when any of max_duration (1-10 minutes, default 5),
+        max_bytes (1 KB to 10 GiB), or max_messages (minimum 1,000) is reached.
+        Object names follow the pattern
+        "{filename_prefix}{datetime}{uuid}{filename_suffix}".
+      message:
+        $ref: '#/components/messages/CloudStorageBatch'
+  projects/{projectId}/schemas/{schemaId}:
+    description: >-
+      A Pub/Sub schema resource. Schemas enforce the format of the data field
+      of messages published to topics that reference the schema.
+    parameters:
+      projectId:
+        description: The Google Cloud project ID that owns the schema.
+        schema:
+          type: string
+      schemaId:
+        description: The schema ID.
+        schema:
+          type: string
+    publish:
+      operationId: registerSchema
+      summary: Register or update a schema in the registry
+      description: >-
+        Schemas are defined in Apache Avro 1.11 or Protocol Buffer (proto2 or
+        proto3). Only one top-level type is allowed; the definition field is
+        capped at 300 KB. A project may hold up to 10,000 schemas with up to 20
+        revisions each. A topic associates a schema and an encoding (JSON or
+        BINARY) that publishers must conform to.
+      message:
+        $ref: '#/components/messages/Schema'
+components:
+  securitySchemes:
+    googleOAuth2:
+      type: oauth2
+      description: Google Cloud OAuth 2.0 authentication.
+      flows:
+        clientCredentials:
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/pubsub: Full access to Pub/Sub topics and subscriptions
+            https://www.googleapis.com/auth/cloud-platform: Full access to Google Cloud services
+  messages:
+    PubsubMessage:
+      name: PubsubMessage
+      title: Pub/Sub Message
+      summary: A message published to a Pub/Sub topic.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/PubsubMessage'
+    ReceivedMessage:
+      name: ReceivedMessage
+      title: Received Message
+      summary: A message returned by a pull subscription, with acknowledgement metadata.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/ReceivedMessage'
+    PushNotification:
+      name: PushNotification
+      title: Push Notification
+      summary: The HTTP POST body Pub/Sub sends to a push subscription endpoint.
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          Content-Type:
+            type: string
+            const: application/json
+          Authorization:
+            type: string
+            description: >-
+              Present when OIDC authentication is enabled on the push
+              subscription. Contains a Bearer JWT issued by Google for the
+              configured service account.
+      payload:
+        $ref: '#/components/schemas/PushNotification'
+    BigQueryRow:
+      name: BigQueryRow
+      title: BigQuery Row
+      summary: >-
+        A row appended to a BigQuery table by a BigQuery subscription. The
+        column set depends on the use_topic_schema, use_table_schema, and
+        write_metadata configuration of the subscription.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/BigQueryRow'
+    CloudStorageBatch:
+      name: CloudStorageBatch
+      title: Cloud Storage Batch File
+      summary: >-
+        A batch of messages flushed to a Cloud Storage object in text or Avro
+        format according to the subscription's text_config or avro_config.
+      payload:
+        $ref: '#/components/schemas/CloudStorageBatch'
+    Schema:
+      name: Schema
+      title: Pub/Sub Schema
+      summary: A schema resource that defines the structure of message data.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/Schema'
+  schemas:
+    PubsubMessage:
+      type: object
+      description: >-
+        The PubsubMessage envelope. A message must contain either the data
+        field or at least one attribute.
+      properties:
+        data:
+          type: string
+          format: byte
+          description: >-
+            The message payload, base64-encoded on the wire. Maximum 10 MB.
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+          maxProperties: 100
+          description: >-
+            Optional key-value metadata. Maximum 100 attributes per message;
+            keys up to 256 bytes; values up to 1024 bytes.
+        messageId:
+          type: string
+          description: >-
+            Server-assigned unique ID for the message within its topic. Set by
+            Pub/Sub at publish time.
+          readOnly: true
+        publishTime:
+          type: string
+          format: date-time
+          description: >-
+            RFC 3339 timestamp set by Pub/Sub when the message was received.
+          readOnly: true
+        orderingKey:
+          type: string
+          description: >-
+            Optional key used to deliver messages with the same value in
+            publish order to a subscriber. Maximum throughput per ordering key
+            is 1 MBps.
+    ReceivedMessage:
+      type: object
+      description: A message returned by a pull subscription.
+      properties:
+        ackId:
+          type: string
+          description: >-
+            Acknowledgement ID. Pass to acknowledge() to confirm delivery,
+            or to modifyAckDeadline() to extend the lease.
+        message:
+          $ref: '#/components/schemas/PubsubMessage'
+        deliveryAttempt:
+          type: integer
+          minimum: 1
+          description: >-
+            Approximate number of times Pub/Sub has attempted to deliver this
+            message. Only populated when a dead-letter policy is configured on
+            the subscription.
+    PushNotification:
+      type: object
+      description: >-
+        The JSON body POSTed to a push subscription's pushEndpoint. The
+        subscriber must return an HTTP success status (200, 201, 202, 204, or
+        102) to acknowledge the message; any other status (or timeout)
+        causes Pub/Sub to redeliver.
+      required:
+        - message
+        - subscription
+      properties:
+        message:
+          type: object
+          required:
+            - messageId
+            - publishTime
+          properties:
+            data:
+              type: string
+              format: byte
+              description: Base64-encoded message payload.
+            attributes:
+              type: object
+              additionalProperties:
+                type: string
+              description: Message attributes as key-value pairs.
+            messageId:
+              type: string
+              description: Server-assigned message ID.
+            publishTime:
+              type: string
+              format: date-time
+              description: RFC 3339 timestamp of when Pub/Sub received the message.
+            orderingKey:
+              type: string
+              description: Ordering key, when ordering is enabled.
+        subscription:
+          type: string
+          description: >-
+            Full subscription resource name in the form
+            "projects/{projectId}/subscriptions/{subscriptionId}".
+        deliveryAttempt:
+          type: integer
+          minimum: 1
+          description: >-
+            Approximate delivery attempt count. Present only when a dead-letter
+            policy is configured.
+      example:
+        deliveryAttempt: 5
+        message:
+          attributes:
+            key: value
+          data: SGVsbG8gQ2xvdWQgUHViL1N1YiEgSGVyZSBpcyBteSBtZXNzYWdlIQ==
+          messageId: '2070443601311540'
+          orderingKey: key
+          publishTime: '2021-02-26T19:13:55.749Z'
+        subscription: projects/myproject/subscriptions/mysubscription
+    BigQueryConfig:
+      type: object
+      description: >-
+        The bigqueryConfig of a BigQuery subscription as exposed on the
+        Subscription resource.
+      properties:
+        table:
+          type: string
+          description: >-
+            The destination BigQuery table in the form
+            "{projectId}.{datasetId}.{tableId}".
+        useTopicSchema:
+          type: boolean
+          description: >-
+            When true, the topic's Avro or Protocol Buffer schema is used to
+            map message data to BigQuery columns.
+        useTableSchema:
+          type: boolean
+          description: >-
+            When true, the BigQuery table's schema is used to map message
+            fields to columns. Mutually exclusive with useTopicSchema.
+        writeMetadata:
+          type: boolean
+          description: >-
+            When true, Pub/Sub writes message metadata columns
+            (subscription_name, message_id, publish_time, data, attributes).
+        dropUnknownFields:
+          type: boolean
+          description: >-
+            When true, fields in the message that are not present in the
+            target schema are dropped instead of failing the write.
+        serviceAccountEmail:
+          type: string
+          description: >-
+            Optional service account used to write to BigQuery. Defaults to
+            the Pub/Sub service agent.
+    BigQueryRow:
+      type: object
+      description: >-
+        A row written to BigQuery by a BigQuery subscription with
+        write_metadata enabled.
+      properties:
+        subscription_name:
+          type: string
+          description: Subscription resource name. STRING column.
+        message_id:
+          type: string
+          description: Pub/Sub-assigned message ID. STRING column.
+        publish_time:
+          type: string
+          format: date-time
+          description: Publish timestamp. TIMESTAMP column.
+        data:
+          type: string
+          description: >-
+            Message body. Column type is BYTES, STRING, or JSON depending on
+            the destination column's type.
+        attributes:
+          type: string
+          description: >-
+            JSON-encoded object containing all message attributes plus
+            additional fields such as the ordering key. STRING or JSON
+            column.
+    CloudStorageConfig:
+      type: object
+      description: >-
+        The cloudStorageConfig of a Cloud Storage subscription as exposed on
+        the Subscription resource.
+      properties:
+        bucket:
+          type: string
+          description: The destination Cloud Storage bucket (must already exist).
+        filenamePrefix:
+          type: string
+          description: Optional prefix prepended to generated object names.
+        filenameSuffix:
+          type: string
+          description: Optional suffix appended to generated object names. Must not end with "/".
+        filenameDatetimeFormat:
+          type: string
+          description: >-
+            Customizable datetime portion of the object name using matchers
+            such as YYYY, MM, DD, hh, mm, ss with optional separators
+            (T, Z, +00:00).
+        maxDuration:
+          type: string
+          description: >-
+            Maximum total wait before flushing a file. Range 1-10 minutes;
+            default 5 minutes. Expressed as a duration string (e.g., "300s").
+        maxBytes:
+          type: string
+          description: >-
+            Maximum file size before a new file is created. Range 1 KB to
+            10 GiB.
+        maxMessages:
+          type: integer
+          minimum: 1000
+          description: Maximum number of messages per file. Minimum 1000.
+        textConfig:
+          type: object
+          description: >-
+            Stores messages as plain text separated by newlines. Payload only;
+            no metadata is written.
+        avroConfig:
+          type: object
+          description: >-
+            Stores messages in Apache Avro binary format. Supports optional
+            metadata and use of the topic schema.
+          properties:
+            writeMetadata:
+              type: boolean
+            useTopicSchema:
+              type: boolean
+        serviceAccountEmail:
+          type: string
+          description: >-
+            Optional service account used to write to Cloud Storage. Defaults
+            to the Pub/Sub service agent.
+    CloudStorageBatch:
+      type: object
+      description: >-
+        Logical representation of a batch of messages written to a Cloud
+        Storage object by a Cloud Storage subscription.
+      properties:
+        objectName:
+          type: string
+          description: >-
+            Generated object name following the pattern
+            "{filename_prefix}{datetime}{uuid}{filename_suffix}".
+        format:
+          type: string
+          enum:
+            - text
+            - avro
+          description: File format determined by textConfig or avroConfig.
+        messageCount:
+          type: integer
+          description: Number of messages contained in the batch.
+        flushReason:
+          type: string
+          enum:
+            - max_duration
+            - max_bytes
+            - max_messages
+          description: Which configured threshold triggered the file flush.
+    Schema:
+      type: object
+      description: >-
+        A Pub/Sub schema resource. Up to 10,000 schemas per project with up to
+        20 revisions per schema.
+      properties:
+        name:
+          type: string
+          description: >-
+            Resource name in the form "projects/{projectId}/schemas/{schemaId}".
+        type:
+          type: string
+          enum:
+            - TYPE_UNSPECIFIED
+            - PROTOCOL_BUFFER
+            - AVRO
+          description: >-
+            Schema framework. AVRO uses Apache Avro 1.11; PROTOCOL_BUFFER uses
+            proto2 or proto3.
+        definition:
+          type: string
+          maxLength: 307200
+          description: >-
+            The schema definition source (Avro JSON or Protocol Buffer source).
+            Only one top-level type is allowed; import statements referencing
+            other types are unsupported. Maximum 300 KB.
+        revisionId:
+          type: string
+          readOnly: true
+          description: Server-assigned schema revision ID.
+        revisionCreateTime:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Server-assigned revision creation time.
+    SchemaSettings:
+      type: object
+      description: >-
+        The schemaSettings of a Topic that bind it to a schema and select an
+        encoding for published messages.
+      properties:
+        schema:
+          type: string
+          description: >-
+            Schema resource name, e.g.,
+            "projects/{projectId}/schemas/{schemaId}".
+        encoding:
+          type: string
+          enum:
+            - ENCODING_UNSPECIFIED
+            - JSON
+            - BINARY
+          description: >-
+            Wire encoding publishers must use for messages on this topic.
+        firstRevisionId:
+          type: string
+          description: Minimum (oldest) revision allowed for validation.
+        lastRevisionId:
+          type: string
+          description: Maximum (newest) revision allowed for validation.
