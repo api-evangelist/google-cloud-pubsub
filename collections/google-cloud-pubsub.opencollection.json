@@ -1,0 +1,384 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Pub/Sub API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Topics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Pub/Sub List topics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pubsub.googleapis.com/v1/projects/:projectId/topics",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists matching topics in the given project."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Pub/Sub Get a topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pubsub.googleapis.com/v1/projects/:projectId/topics/:topicId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "topicId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets the configuration of a topic."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Pub/Sub Create a topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://pubsub.googleapis.com/v1/projects/:projectId/topics/:topicId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "topicId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates the given topic with the given name."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Pub/Sub Delete a topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://pubsub.googleapis.com/v1/projects/:projectId/topics/:topicId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "topicId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes the topic with the given name."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Pub/Sub Publish messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://pubsub.googleapis.com/v1/projects/:projectId/topics/:topicId:publish",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "topicId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds one or more messages to the topic."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Pub/Sub List subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pubsub.googleapis.com/v1/projects/:projectId/subscriptions",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists matching subscriptions in the given project."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Pub/Sub Get a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pubsub.googleapis.com/v1/projects/:projectId/subscriptions/:subscriptionId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets the configuration details of a subscription."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Pub/Sub Create a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://pubsub.googleapis.com/v1/projects/:projectId/subscriptions/:subscriptionId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a subscription to a given topic."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Pub/Sub Delete a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://pubsub.googleapis.com/v1/projects/:projectId/subscriptions/:subscriptionId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes an existing subscription."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Pub/Sub Pull messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://pubsub.googleapis.com/v1/projects/:projectId/subscriptions/:subscriptionId:pull",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pulls messages from the server."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Pub/Sub Acknowledge messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://pubsub.googleapis.com/v1/projects/:projectId/subscriptions/:subscriptionId:acknowledge",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscriptionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Acknowledges the messages associated with the ack IDs in the request."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Schemas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Pub/Sub List schemas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pubsub.googleapis.com/v1/projects/:projectId/schemas",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists schemas in a project."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Pub/Sub Create a schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://pubsub.googleapis.com/v1/projects/:projectId/schemas",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "schemaId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a schema in a project."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
