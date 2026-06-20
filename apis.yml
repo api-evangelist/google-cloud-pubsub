@@ -3,7 +3,7 @@ description: >-
   Google Cloud Pub/Sub is a fully managed, real-time messaging service that allows you to send and receive messages
   between independent applications. It provides reliable, many-to-many, asynchronous messaging that decouples senders
   and receivers.
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/google-cloud-pubsub/refs/heads/main/apis.yml
 created: '2026-03-13'
 modified: '2026-05-30'
@@ -19,7 +19,7 @@ apis:
       The Cloud Pub/Sub API provides reliable, many-to-many, asynchronous messaging between applications. It allows you
       to create and manage topics for publishing messages, create subscriptions for consuming messages, and handle
       message acknowledgment and delivery.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://cloud.google.com/pubsub/docs
     baseURL: https://pubsub.googleapis.com
     tags:
