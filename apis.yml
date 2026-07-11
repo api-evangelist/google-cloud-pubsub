@@ -36,6 +36,12 @@ apis:
       - type: JSONSchema
         url: json-schema/google-cloud-pubsub-topic-schema.json
 common:
+  - type: VulnerabilityDisclosure
+    url: security/google-cloud-pubsub-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/google-cloud-pubsub-domain-security.yml
+  - type: Authentication
+    url: authentication/google-cloud-pubsub-authentication.yml
   - type: OAuthScopes
     url: scopes/google-cloud-pubsub-scopes.yml
   - type: GitHubOrganization
