@@ -36,6 +36,8 @@ apis:
       - type: JSONSchema
         url: json-schema/google-cloud-pubsub-topic-schema.json
 common:
+  - type: OAuthScopes
+    url: scopes/google-cloud-pubsub-scopes.yml
   - type: GitHubOrganization
     url: https://github.com/GoogleCloudPlatform
   - type: GettingStarted
