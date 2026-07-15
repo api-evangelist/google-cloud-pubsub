@@ -36,6 +36,8 @@ apis:
       - type: JSONSchema
         url: json-schema/google-cloud-pubsub-topic-schema.json
 common:
+  - type: AgenticAccess
+    url: agentic-access/google-cloud-pubsub-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/google-cloud-pubsub-vulnerability-disclosure.yml
   - type: DomainSecurity
