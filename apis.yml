@@ -3,7 +3,20 @@ description: >-
   Google Cloud Pub/Sub is a fully managed, real-time messaging service that allows you to send and receive messages
   between independent applications. It provides reliable, many-to-many, asynchronous messaging that decouples senders
   and receivers.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/google-cloud-pubsub.png
 url: https://raw.githubusercontent.com/api-evangelist/google-cloud-pubsub/refs/heads/main/apis.yml
 created: '2026-03-13'
 modified: '2026-05-30'
@@ -14,27 +27,54 @@ tags:
   - Messaging
   - Pub/Sub
 apis:
-  - name: Google Cloud Pub/Sub API
-    description: >-
-      The Cloud Pub/Sub API provides reliable, many-to-many, asynchronous messaging between applications. It allows you
-      to create and manage topics for publishing messages, create subscriptions for consuming messages, and handle
-      message acknowledgment and delivery.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://cloud.google.com/pubsub/docs
-    baseURL: https://pubsub.googleapis.com
-    tags:
-      - Messaging
-      - Subscriptions
-      - Topics
-    properties:
-      - type: Documentation
-        url: https://cloud.google.com/pubsub/docs/reference/rest
-      - type: OpenAPI
-        url: openapi/google-cloud-pubsub-openapi.yml
-      - type: AsyncAPI
-        url: asyncapi/google-cloud-pubsub-asyncapi.yml
-      - type: JSONSchema
-        url: json-schema/google-cloud-pubsub-topic-schema.json
+- aid: google-cloud-pubsub:google-cloud-pubsub-schemas-api
+  name: Google Cloud Pub/Sub Schemas API
+  description: Operations for managing Pub/Sub schemas
+  humanURL: https://cloud.google.com/pubsub/docs
+  baseURL: https://pubsub.googleapis.com
+  tags:
+  - Schemas
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-pubsub-schemas-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/pubsub/docs/reference/rest
+  - type: AsyncAPI
+    url: asyncapi/google-cloud-pubsub-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/google-cloud-pubsub-topic-schema.json
+- aid: google-cloud-pubsub:google-cloud-pubsub-subscriptions-api
+  name: Google Cloud Pub/Sub Subscriptions API
+  description: Operations for managing Pub/Sub subscriptions
+  humanURL: https://cloud.google.com/pubsub/docs
+  baseURL: https://pubsub.googleapis.com
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-pubsub-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/pubsub/docs/reference/rest
+  - type: AsyncAPI
+    url: asyncapi/google-cloud-pubsub-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/google-cloud-pubsub-topic-schema.json
+- aid: google-cloud-pubsub:google-cloud-pubsub-topics-api
+  name: Google Cloud Pub/Sub Topics API
+  description: Operations for managing Pub/Sub topics
+  humanURL: https://cloud.google.com/pubsub/docs
+  baseURL: https://pubsub.googleapis.com
+  tags:
+  - Topics
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-pubsub-topics-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/pubsub/docs/reference/rest
+  - type: AsyncAPI
+    url: asyncapi/google-cloud-pubsub-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/google-cloud-pubsub-topic-schema.json
 common:
   - type: AgenticAccess
     url: agentic-access/google-cloud-pubsub-agentic-access.yml
