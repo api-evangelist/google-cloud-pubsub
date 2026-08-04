@@ -1,0 +1,18 @@
+{
+  "provider": "google-cloud-pubsub",
+  "sources": [
+    "google-cloud-pubsub-schemas-api-openapi.yml",
+    "google-cloud-pubsub-subscriptions-api-openapi.yml",
+    "google-cloud-pubsub-topics-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-cloud-pubsub-schemas-api-openapi.yml",
+    "google-cloud-pubsub-subscriptions-api-openapi.yml",
+    "google-cloud-pubsub-topics-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
