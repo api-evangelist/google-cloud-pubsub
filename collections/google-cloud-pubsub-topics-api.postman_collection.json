@@ -1,0 +1,655 @@
+{
+  "item": [
+    {
+      "id": "4bc50816-680d-46d9-9eb8-79add068a2d2",
+      "name": "Topics",
+      "description": {
+        "content": "Operations for managing Pub/Sub topics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1512262a-d881-4310-a27d-fa95d823e7c9",
+          "name": "Google Cloud Pub/Sub List topics",
+          "request": {
+            "name": "Google Cloud Pub/Sub List topics",
+            "description": {
+              "content": "Lists matching topics in the given project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "topics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fec428b3-3f60-46a9-88cd-60eda3db7dbf",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "topics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"topics\": [\n    {\n      \"name\": \"string\",\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"messageStoragePolicy\": {\n        \"allowedPersistenceRegions\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"kmsKeyName\": \"string\",\n      \"schemaSettings\": {\n        \"schema\": \"string\",\n        \"encoding\": \"BINARY\",\n        \"firstRevisionId\": \"string\",\n        \"lastRevisionId\": \"string\"\n      },\n      \"satisfiesPzs\": true,\n      \"messageRetentionDuration\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"labels\": {\n        \"key_0\": \"string\"\n      },\n      \"messageStoragePolicy\": {\n        \"allowedPersistenceRegions\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"kmsKeyName\": \"string\",\n      \"schemaSettings\": {\n        \"schema\": \"string\",\n        \"encoding\": \"BINARY\",\n        \"firstRevisionId\": \"string\",\n        \"lastRevisionId\": \"string\"\n      },\n      \"satisfiesPzs\": false,\n      \"messageRetentionDuration\": \"string\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50fe4571-3da9-4fae-8fe2-1592dc0fdcd2",
+          "name": "Google Cloud Pub/Sub Get a topic",
+          "request": {
+            "name": "Google Cloud Pub/Sub Get a topic",
+            "description": {
+              "content": "Gets the configuration of a topic.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "topics",
+                ":topicId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "topicId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7c8e6051-d3be-4ec4-b980-7c695108c237",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "topics",
+                    ":topicId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "topicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"labels\": {\n    \"key_0\": \"string\"\n  },\n  \"messageStoragePolicy\": {\n    \"allowedPersistenceRegions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"kmsKeyName\": \"string\",\n  \"schemaSettings\": {\n    \"schema\": \"string\",\n    \"encoding\": \"ENCODING_UNSPECIFIED\",\n    \"firstRevisionId\": \"string\",\n    \"lastRevisionId\": \"string\"\n  },\n  \"satisfiesPzs\": false,\n  \"messageRetentionDuration\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b3dadf7-e91a-4735-8ba8-63dd17ceff87",
+          "name": "Google Cloud Pub/Sub Create a topic",
+          "request": {
+            "name": "Google Cloud Pub/Sub Create a topic",
+            "description": {
+              "content": "Creates the given topic with the given name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "topics",
+                ":topicId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "topicId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"messageStoragePolicy\": {\n    \"allowedPersistenceRegions\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"kmsKeyName\": \"<string>\",\n  \"schemaSettings\": {\n    \"schema\": \"<string>\",\n    \"encoding\": \"<string>\",\n    \"firstRevisionId\": \"<string>\",\n    \"lastRevisionId\": \"<string>\"\n  },\n  \"satisfiesPzs\": \"<boolean>\",\n  \"messageRetentionDuration\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "30638d6e-9ba5-408b-9c62-4bcc0227a927",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "topics",
+                    ":topicId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "topicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"messageStoragePolicy\": {\n    \"allowedPersistenceRegions\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"kmsKeyName\": \"<string>\",\n  \"schemaSettings\": {\n    \"schema\": \"<string>\",\n    \"encoding\": \"<string>\",\n    \"firstRevisionId\": \"<string>\",\n    \"lastRevisionId\": \"<string>\"\n  },\n  \"satisfiesPzs\": \"<boolean>\",\n  \"messageRetentionDuration\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"labels\": {\n    \"key_0\": \"string\"\n  },\n  \"messageStoragePolicy\": {\n    \"allowedPersistenceRegions\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"kmsKeyName\": \"string\",\n  \"schemaSettings\": {\n    \"schema\": \"string\",\n    \"encoding\": \"ENCODING_UNSPECIFIED\",\n    \"firstRevisionId\": \"string\",\n    \"lastRevisionId\": \"string\"\n  },\n  \"satisfiesPzs\": false,\n  \"messageRetentionDuration\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1f6beb6-46e3-42ee-a722-78a0207a2f65",
+          "name": "Google Cloud Pub/Sub Delete a topic",
+          "request": {
+            "name": "Google Cloud Pub/Sub Delete a topic",
+            "description": {
+              "content": "Deletes the topic with the given name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "topics",
+                ":topicId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "topicId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a4f692d-59e5-4303-a373-d606700277ff",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "topics",
+                    ":topicId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "topicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d18b0038-4117-4c0f-a234-da70fa3f9235",
+          "name": "Google Cloud Pub/Sub Publish messages",
+          "request": {
+            "name": "Google Cloud Pub/Sub Publish messages",
+            "description": {
+              "content": "Adds one or more messages to the topic.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "topics",
+                "{{topicId}}:publish"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"messages\": [\n    {\n      \"data\": \"<string>\",\n      \"attributes\": {\n        \"key_0\": \"<string>\"\n      },\n      \"messageId\": \"<string>\",\n      \"publishTime\": \"<dateTime>\",\n      \"orderingKey\": \"<string>\"\n    },\n    {\n      \"data\": \"<string>\",\n      \"attributes\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"messageId\": \"<string>\",\n      \"publishTime\": \"<dateTime>\",\n      \"orderingKey\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "792c7195-6d6c-496c-89b5-a44dc25b70df",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "topics",
+                    "{{topicId}}:publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messages\": [\n    {\n      \"data\": \"string\",\n      \"attributes\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"messageId\": \"string\",\n      \"publishTime\": \"2016-05-29T20:36:01.561Z\",\n      \"orderingKey\": \"string\"\n    },\n    {\n      \"data\": \"string\",\n      \"attributes\": {\n        \"key_0\": \"string\"\n      },\n      \"messageId\": \"string\",\n      \"publishTime\": \"2001-01-08T13:43:18.556Z\",\n      \"orderingKey\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messageIds\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://pubsub.googleapis.com/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "topicId"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/pubsub https://www.googleapis.com/auth/cloud-platform"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0b2d1e7c-32db-4cde-a068-7e422adfa4cf",
+    "name": "Google Cloud Pub/Sub Schemas Topics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Cloud Pub/Sub API provides reliable, many-to-many, asynchronous messaging between applications. Publishers send messages to topics, and subscribers receive messages via subscriptions. It supports both push and pull delivery modes.\n\nContact Support:\n Name: Google Cloud",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,768 @@
+{
+  "item": [
+    {
+      "id": "7f4c9d99-ecbd-4b95-a282-bd9f6f849494",
+      "name": "Subscriptions",
+      "description": {
+        "content": "Operations for managing Pub/Sub subscriptions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2532f62f-fd95-402e-86b1-94be7bda8475",
+          "name": "Google Cloud Pub/Sub List subscriptions",
+          "request": {
+            "name": "Google Cloud Pub/Sub List subscriptions",
+            "description": {
+              "content": "Lists matching subscriptions in the given project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8bdce2f6-a667-42be-9288-ba810a15147f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"subscriptions\": [\n    {\n      \"name\": \"string\",\n      \"topic\": \"string\",\n      \"pushConfig\": {\n        \"pushEndpoint\": \"string\",\n        \"attributes\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\",\n          \"key_3\": \"string\"\n        },\n        \"oidcToken\": {\n          \"serviceAccountEmail\": \"string\",\n          \"audience\": \"string\"\n        }\n      },\n      \"ackDeadlineSeconds\": 5578,\n      \"retainAckedMessages\": false,\n      \"messageRetentionDuration\": \"string\",\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"enableMessageOrdering\": true,\n      \"expirationPolicy\": {\n        \"ttl\": \"string\"\n      },\n      \"filter\": \"string\",\n      \"deadLetterPolicy\": {\n        \"deadLetterTopic\": \"string\",\n        \"maxDeliveryAttempts\": 4620\n      },\n      \"retryPolicy\": {\n        \"minimumBackoff\": \"string\",\n        \"maximumBackoff\": \"string\"\n      },\n      \"detached\": true,\n      \"enableExactlyOnceDelivery\": true,\n      \"state\": \"ACTIVE\"\n    },\n    {\n      \"name\": \"string\",\n      \"topic\": \"string\",\n      \"pushConfig\": {\n        \"pushEndpoint\": \"string\",\n        \"attributes\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"oidcToken\": {\n          \"serviceAccountEmail\": \"string\",\n          \"audience\": \"string\"\n        }\n      },\n      \"ackDeadlineSeconds\": 1168,\n      \"retainAckedMessages\": false,\n      \"messageRetentionDuration\": \"string\",\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"enableMessageOrdering\": false,\n      \"expirationPolicy\": {\n        \"ttl\": \"string\"\n      },\n      \"filter\": \"string\",\n      \"deadLetterPolicy\": {\n        \"deadLetterTopic\": \"string\",\n        \"maxDeliveryAttempts\": 7676\n      },\n      \"retryPolicy\": {\n        \"minimumBackoff\": \"string\",\n        \"maximumBackoff\": \"string\"\n      },\n      \"detached\": false,\n      \"enableExactlyOnceDelivery\": false,\n      \"state\": \"ACTIVE\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "948abbce-9c70-44e1-86bc-33b0fffd5058",
+          "name": "Google Cloud Pub/Sub Get a subscription",
+          "request": {
+            "name": "Google Cloud Pub/Sub Get a subscription",
+            "description": {
+              "content": "Gets the configuration details of a subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "subscriptions",
+                ":subscriptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e1fcbff-6202-4b5e-95e4-6b5e3cb951ac",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"topic\": \"string\",\n  \"pushConfig\": {\n    \"pushEndpoint\": \"string\",\n    \"attributes\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": \"string\"\n    },\n    \"oidcToken\": {\n      \"serviceAccountEmail\": \"string\",\n      \"audience\": \"string\"\n    }\n  },\n  \"ackDeadlineSeconds\": 4898,\n  \"retainAckedMessages\": false,\n  \"messageRetentionDuration\": \"string\",\n  \"labels\": {\n    \"key_0\": \"string\"\n  },\n  \"enableMessageOrdering\": false,\n  \"expirationPolicy\": {\n    \"ttl\": \"string\"\n  },\n  \"filter\": \"string\",\n  \"deadLetterPolicy\": {\n    \"deadLetterTopic\": \"string\",\n    \"maxDeliveryAttempts\": 6068\n  },\n  \"retryPolicy\": {\n    \"minimumBackoff\": \"string\",\n    \"maximumBackoff\": \"string\"\n  },\n  \"detached\": true,\n  \"enableExactlyOnceDelivery\": false,\n  \"state\": \"ACTIVE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bdb81d36-077c-42b4-b7e1-57368193fb37",
+          "name": "Google Cloud Pub/Sub Create a subscription",
+          "request": {
+            "name": "Google Cloud Pub/Sub Create a subscription",
+            "description": {
+              "content": "Creates a subscription to a given topic.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "subscriptions",
+                ":subscriptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"topic\": \"<string>\",\n  \"pushConfig\": {\n    \"pushEndpoint\": \"<string>\",\n    \"attributes\": {\n      \"key_0\": \"<string>\"\n    },\n    \"oidcToken\": {\n      \"serviceAccountEmail\": \"<string>\",\n      \"audience\": \"<string>\"\n    }\n  },\n  \"ackDeadlineSeconds\": \"<integer>\",\n  \"retainAckedMessages\": \"<boolean>\",\n  \"messageRetentionDuration\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"enableMessageOrdering\": \"<boolean>\",\n  \"expirationPolicy\": {\n    \"ttl\": \"<string>\"\n  },\n  \"filter\": \"<string>\",\n  \"deadLetterPolicy\": {\n    \"deadLetterTopic\": \"<string>\",\n    \"maxDeliveryAttempts\": \"<integer>\"\n  },\n  \"retryPolicy\": {\n    \"minimumBackoff\": \"<string>\",\n    \"maximumBackoff\": \"<string>\"\n  },\n  \"detached\": \"<boolean>\",\n  \"enableExactlyOnceDelivery\": \"<boolean>\",\n  \"state\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4ac34139-72a8-4ec8-ae19-16b2925f654e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"topic\": \"<string>\",\n  \"pushConfig\": {\n    \"pushEndpoint\": \"<string>\",\n    \"attributes\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"oidcToken\": {\n      \"serviceAccountEmail\": \"<string>\",\n      \"audience\": \"<string>\"\n    }\n  },\n  \"ackDeadlineSeconds\": \"<integer>\",\n  \"retainAckedMessages\": \"<boolean>\",\n  \"messageRetentionDuration\": \"<string>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"enableMessageOrdering\": \"<boolean>\",\n  \"expirationPolicy\": {\n    \"ttl\": \"<string>\"\n  },\n  \"filter\": \"<string>\",\n  \"deadLetterPolicy\": {\n    \"deadLetterTopic\": \"<string>\",\n    \"maxDeliveryAttempts\": \"<integer>\"\n  },\n  \"retryPolicy\": {\n    \"minimumBackoff\": \"<string>\",\n    \"maximumBackoff\": \"<string>\"\n  },\n  \"detached\": \"<boolean>\",\n  \"enableExactlyOnceDelivery\": \"<boolean>\",\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"topic\": \"string\",\n  \"pushConfig\": {\n    \"pushEndpoint\": \"string\",\n    \"attributes\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": \"string\"\n    },\n    \"oidcToken\": {\n      \"serviceAccountEmail\": \"string\",\n      \"audience\": \"string\"\n    }\n  },\n  \"ackDeadlineSeconds\": 4898,\n  \"retainAckedMessages\": false,\n  \"messageRetentionDuration\": \"string\",\n  \"labels\": {\n    \"key_0\": \"string\"\n  },\n  \"enableMessageOrdering\": false,\n  \"expirationPolicy\": {\n    \"ttl\": \"string\"\n  },\n  \"filter\": \"string\",\n  \"deadLetterPolicy\": {\n    \"deadLetterTopic\": \"string\",\n    \"maxDeliveryAttempts\": 6068\n  },\n  \"retryPolicy\": {\n    \"minimumBackoff\": \"string\",\n    \"maximumBackoff\": \"string\"\n  },\n  \"detached\": true,\n  \"enableExactlyOnceDelivery\": false,\n  \"state\": \"ACTIVE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59c08875-65b3-4070-a62e-e584145bdeb1",
+          "name": "Google Cloud Pub/Sub Delete a subscription",
+          "request": {
+            "name": "Google Cloud Pub/Sub Delete a subscription",
+            "description": {
+              "content": "Deletes an existing subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "subscriptions",
+                ":subscriptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscriptionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7a389e83-6760-46c8-bce2-e5c18b612d47",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscriptionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14ec281d-654b-4c26-911f-b793370addf1",
+          "name": "Google Cloud Pub/Sub Pull messages",
+          "request": {
+            "name": "Google Cloud Pub/Sub Pull messages",
+            "description": {
+              "content": "Pulls messages from the server.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "subscriptions",
+                "{{subscriptionId}}:pull"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"maxMessages\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91040914-d7a9-4b25-a45e-0587a87f7f7a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "subscriptions",
+                    "{{subscriptionId}}:pull"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"maxMessages\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"receivedMessages\": [\n    {\n      \"ackId\": \"string\",\n      \"message\": {\n        \"data\": \"string\",\n        \"attributes\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        \"messageId\": \"string\",\n        \"publishTime\": \"1963-04-08T14:55:05.234Z\",\n        \"orderingKey\": \"string\"\n      },\n      \"deliveryAttempt\": 7001\n    },\n    {\n      \"ackId\": \"string\",\n      \"message\": {\n        \"data\": \"string\",\n        \"attributes\": {\n          \"key_0\": \"string\"\n        },\n        \"messageId\": \"string\",\n        \"publishTime\": \"1993-04-15T03:20:11.469Z\",\n        \"orderingKey\": \"string\"\n      },\n      \"deliveryAttempt\": 511\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3bd4a14-bd28-4c84-8cfa-8ca705c0cb19",
+          "name": "Google Cloud Pub/Sub Acknowledge messages",
+          "request": {
+            "name": "Google Cloud Pub/Sub Acknowledge messages",
+            "description": {
+              "content": "Acknowledges the messages associated with the ack IDs in the request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "subscriptions",
+                "{{subscriptionId}}:acknowledge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ackIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e9e6af68-46a5-40ca-9c41-2ca9a12a5e3d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "subscriptions",
+                    "{{subscriptionId}}:acknowledge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ackIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://pubsub.googleapis.com/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "subscriptionId"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/pubsub https://www.googleapis.com/auth/cloud-platform"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f1d0884d-efc3-4c25-aac4-c5b062f60f8c",
+    "name": "Google Cloud Pub/Sub Schemas Subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Cloud Pub/Sub API provides reliable, many-to-many, asynchronous messaging between applications. Publishers send messages to topics, and subscribers receive messages via subscriptions. It supports both push and pull delivery modes.\n\nContact Support:\n Name: Google Cloud",
+      "type": "text/plain"
+    }
+  }
+}

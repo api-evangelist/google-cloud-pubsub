@@ -1,0 +1,158 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Pub/Sub Schemas Topics API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Topics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Pub/Sub List topics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pubsub.googleapis.com/v1/projects/:projectId/topics",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists matching topics in the given project."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Pub/Sub Get a topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pubsub.googleapis.com/v1/projects/:projectId/topics/:topicId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "topicId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets the configuration of a topic."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Pub/Sub Create a topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://pubsub.googleapis.com/v1/projects/:projectId/topics/:topicId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "topicId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates the given topic with the given name."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Pub/Sub Delete a topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://pubsub.googleapis.com/v1/projects/:projectId/topics/:topicId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "topicId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes the topic with the given name."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Pub/Sub Publish messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://pubsub.googleapis.com/v1/projects/:projectId/topics/:topicId:publish",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "topicId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds one or more messages to the topic."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
