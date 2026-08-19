@@ -20,7 +20,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/google-clo
 url: https://raw.githubusercontent.com/api-evangelist/google-cloud-pubsub/refs/heads/main/apis.yml
 created: '2026-03-13'
 modified: '2026-05-30'
-specificationVersion: '0.18'
+specificationVersion: '0.23'
 tags:
   - Event-Driven
   - Google Cloud
