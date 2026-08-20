@@ -25,6 +25,11 @@ tags:
   - Event-Driven
   - Google Cloud
   - Messaging
+  - Pub-Sub
+tags_raw:
+  - Event-Driven
+  - Google Cloud
+  - Messaging
   - Pub/Sub
 apis:
 - aid: google-cloud-pubsub:google-cloud-pubsub-schemas-api
@@ -49,6 +54,8 @@ apis:
   humanURL: https://cloud.google.com/pubsub/docs
   baseURL: https://pubsub.googleapis.com
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
