@@ -3,6 +3,18 @@ description: >-
   Google Cloud Pub/Sub is a fully managed, real-time messaging service that allows you to send and receive messages
   between independent applications. It provides reliable, many-to-many, asynchronous messaging that decouples senders
   and receivers.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
