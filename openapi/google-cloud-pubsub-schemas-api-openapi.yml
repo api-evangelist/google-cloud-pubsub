@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Google Cloud Pub/Sub Schemas API
   description: The Cloud Pub/Sub API provides reliable, many-to-many, asynchronous messaging between applications. Publishers send messages to topics, and subscribers receive messages via subscriptions. It supports both push and pull delivery modes.
@@ -77,15 +77,6 @@ paths:
                 $ref: '#/components/schemas/Schema'
 components:
   schemas:
-    ListSchemasResponse:
-      type: object
-      properties:
-        schemas:
-          type: array
-          items:
-            $ref: '#/components/schemas/Schema'
-        nextPageToken:
-          type: string
     Schema:
       type: object
       properties:
@@ -104,6 +95,15 @@ components:
         revisionCreateTime:
           type: string
           format: date-time
+    ListSchemasResponse:
+      type: object
+      properties:
+        schemas:
+          type: array
+          items:
+            $ref: '#/components/schemas/Schema'
+        nextPageToken:
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2
