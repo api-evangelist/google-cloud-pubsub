@@ -50,6 +50,8 @@ apis:
   humanURL: https://cloud.google.com/pubsub/docs
   baseURL: https://pubsub.googleapis.com
   tags:
+  - Schema
+  tags_raw:
   - Schemas
   properties:
   - type: OpenAPI
@@ -84,6 +86,8 @@ apis:
   humanURL: https://cloud.google.com/pubsub/docs
   baseURL: https://pubsub.googleapis.com
   tags:
+  - Topic
+  tags_raw:
   - Topics
   properties:
   - type: OpenAPI
