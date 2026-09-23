@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Cloud Pub/Sub Schemas Topics API
+  title: Google Cloud Pub/Sub Topics API
   description: The Cloud Pub/Sub API provides reliable, many-to-many, asynchronous messaging between applications. Publishers send messages to topics, and subscribers receive messages via subscriptions. It supports both push and pull delivery modes.
   version: v1
   contact:
@@ -183,15 +183,6 @@ components:
           description: Output only. The time at which the message was published.
         orderingKey:
           type: string
-    ListTopicsResponse:
-      type: object
-      properties:
-        topics:
-          type: array
-          items:
-            $ref: '#/components/schemas/Topic'
-        nextPageToken:
-          type: string
     Topic:
       type: object
       properties:
@@ -232,6 +223,15 @@ components:
         messageRetentionDuration:
           type: string
           description: Duration for message retention, in seconds format (e.g. 86400s).
+    ListTopicsResponse:
+      type: object
+      properties:
+        topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Topic'
+        nextPageToken:
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2

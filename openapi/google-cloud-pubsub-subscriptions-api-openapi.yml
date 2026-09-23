@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Cloud Pub/Sub Schemas Subscriptions API
+  title: Google Cloud Pub/Sub Subscriptions API
   description: The Cloud Pub/Sub API provides reliable, many-to-many, asynchronous messaging between applications. Publishers send messages to topics, and subscribers receive messages via subscriptions. It supports both push and pull delivery modes.
   version: v1
   contact:
@@ -195,25 +195,6 @@ paths:
           description: Successful response
 components:
   schemas:
-    PubsubMessage:
-      type: object
-      properties:
-        data:
-          type: string
-          description: The message data field (base64-encoded).
-        attributes:
-          type: object
-          additionalProperties:
-            type: string
-        messageId:
-          type: string
-          description: Output only. ID of this message.
-        publishTime:
-          type: string
-          format: date-time
-          description: Output only. The time at which the message was published.
-        orderingKey:
-          type: string
     ReceivedMessage:
       type: object
       properties:
@@ -223,15 +204,6 @@ components:
           $ref: '#/components/schemas/PubsubMessage'
         deliveryAttempt:
           type: integer
-    ListSubscriptionsResponse:
-      type: object
-      properties:
-        subscriptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Subscription'
-        nextPageToken:
-          type: string
     Subscription:
       type: object
       properties:
@@ -302,6 +274,34 @@ components:
           - STATE_UNSPECIFIED
           - ACTIVE
           - RESOURCE_ERROR
+    ListSubscriptionsResponse:
+      type: object
+      properties:
+        subscriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Subscription'
+        nextPageToken:
+          type: string
+    PubsubMessage:
+      type: object
+      properties:
+        data:
+          type: string
+          description: The message data field (base64-encoded).
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+        messageId:
+          type: string
+          description: Output only. ID of this message.
+        publishTime:
+          type: string
+          format: date-time
+          description: Output only. The time at which the message was published.
+        orderingKey:
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2
