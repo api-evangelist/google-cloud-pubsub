@@ -195,15 +195,15 @@ paths:
           description: Successful response
 components:
   schemas:
-    ReceivedMessage:
+    ListSubscriptionsResponse:
       type: object
       properties:
-        ackId:
+        subscriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Subscription'
+        nextPageToken:
           type: string
-        message:
-          $ref: '#/components/schemas/PubsubMessage'
-        deliveryAttempt:
-          type: integer
     Subscription:
       type: object
       properties:
@@ -274,15 +274,6 @@ components:
           - STATE_UNSPECIFIED
           - ACTIVE
           - RESOURCE_ERROR
-    ListSubscriptionsResponse:
-      type: object
-      properties:
-        subscriptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Subscription'
-        nextPageToken:
-          type: string
     PubsubMessage:
       type: object
       properties:
@@ -302,6 +293,15 @@ components:
           description: Output only. The time at which the message was published.
         orderingKey:
           type: string
+    ReceivedMessage:
+      type: object
+      properties:
+        ackId:
+          type: string
+        message:
+          $ref: '#/components/schemas/PubsubMessage'
+        deliveryAttempt:
+          type: integer
   securitySchemes:
     oauth2:
       type: oauth2
