@@ -164,25 +164,6 @@ paths:
                       type: string
 components:
   schemas:
-    PubsubMessage:
-      type: object
-      properties:
-        data:
-          type: string
-          description: The message data field (base64-encoded).
-        attributes:
-          type: object
-          additionalProperties:
-            type: string
-        messageId:
-          type: string
-          description: Output only. ID of this message.
-        publishTime:
-          type: string
-          format: date-time
-          description: Output only. The time at which the message was published.
-        orderingKey:
-          type: string
     Topic:
       type: object
       properties:
@@ -223,6 +204,25 @@ components:
         messageRetentionDuration:
           type: string
           description: Duration for message retention, in seconds format (e.g. 86400s).
+    PubsubMessage:
+      type: object
+      properties:
+        data:
+          type: string
+          description: The message data field (base64-encoded).
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+        messageId:
+          type: string
+          description: Output only. ID of this message.
+        publishTime:
+          type: string
+          format: date-time
+          description: Output only. The time at which the message was published.
+        orderingKey:
+          type: string
     ListTopicsResponse:
       type: object
       properties:

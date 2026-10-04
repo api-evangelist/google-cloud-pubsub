@@ -213,25 +213,6 @@ components:
             $ref: '#/components/schemas/Subscription'
         nextPageToken:
           type: string
-    PubsubMessage:
-      type: object
-      properties:
-        data:
-          type: string
-          description: The message data field (base64-encoded).
-        attributes:
-          type: object
-          additionalProperties:
-            type: string
-        messageId:
-          type: string
-          description: Output only. ID of this message.
-        publishTime:
-          type: string
-          format: date-time
-          description: Output only. The time at which the message was published.
-        orderingKey:
-          type: string
     Subscription:
       type: object
       properties:
@@ -302,6 +283,25 @@ components:
           - STATE_UNSPECIFIED
           - ACTIVE
           - RESOURCE_ERROR
+    PubsubMessage:
+      type: object
+      properties:
+        data:
+          type: string
+          description: The message data field (base64-encoded).
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+        messageId:
+          type: string
+          description: Output only. ID of this message.
+        publishTime:
+          type: string
+          format: date-time
+          description: Output only. The time at which the message was published.
+        orderingKey:
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2
