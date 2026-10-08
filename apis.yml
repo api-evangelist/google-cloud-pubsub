@@ -99,6 +99,12 @@ apis:
   - type: JSONSchema
     url: json-schema/google-cloud-pubsub-topic-schema.json
 common:
+  - type: Plans
+    url: plans/google-cloud-pubsub-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/google-cloud-pubsub-rate-limits.yml
+  - type: FinOps
+    url: finops/google-cloud-pubsub-finops.yml
   - type: Website
     url: https://www.google.com/
   - type: AgenticAccess
