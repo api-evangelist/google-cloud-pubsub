@@ -1,4 +1,4 @@
-# Google Cloud Pub/Sub (google-cloud-pubsub)
+# Google Cloud Pub/Sub
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,53 +66,163 @@
 
 Google Cloud Pub/Sub is a fully managed, real-time messaging service that allows you to send and receive messages between independent applications. It provides reliable, many-to-many, asynchronous messaging that decouples senders and receivers.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/google-cloud-pubsub/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/google-cloud-pubsub/refs/heads/main/apis.yml)
+**Areas:** Event-Driven · Google Cloud · Messaging · Pub/Sub
 
-## Tags
+## Google Cloud Pub/Sub on APIs.io
 
-- Event-Driven
-- Google Cloud
-- Messaging
-- Pub/Sub
+Everything profiled for Google Cloud Pub/Sub is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/google-cloud-pubsub/](https://apis.io/providers/google-cloud-pubsub/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (3)
 
-- **Created:** 2026-03-13
-- **Modified:** 2026-05-30
+- [Google Cloud Pub/Sub Schemas API](https://apis.io/apis/google-cloud-pubsub/google-cloud-pubsub-schemas-api/) — Operations for managing Pub/Sub schemas
+- [Google Cloud Pub/Sub Subscriptions API](https://apis.io/apis/google-cloud-pubsub/google-cloud-pubsub-subscriptions-api/) — Operations for managing Pub/Sub subscriptions
+- [Google Cloud Pub/Sub Topics API](https://apis.io/apis/google-cloud-pubsub/google-cloud-pubsub-topics-api/) — Operations for managing Pub/Sub topics
 
-## APIs
+### Published properties
 
-### Google Cloud Pub/Sub API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-The Cloud Pub/Sub API provides reliable, many-to-many, asynchronous messaging between applications. It allows you to create and manage topics for publishing messages, create subscriptions for consuming messages, and handle message acknowledgment and delivery.
+#### AsyncAPI (1)
 
-- **Human URL:** [https://cloud.google.com/pubsub/docs](https://cloud.google.com/pubsub/docs)
-- **Base URL:** `https://pubsub.googleapis.com`
+Event-driven and webhook contracts.
 
-#### Tags
+- [Google Cloud Pub/Sub Messaging Surface](https://apis.io/asyncapis/google-cloud-pubsub/google-cloud-pubsub-asyncapi/)
 
-- Messaging
-- Subscriptions
-- Topics
+#### Event channels (6)
 
-#### Properties
+Individual events and webhooks the provider emits.
 
-- [Documentation](https://cloud.google.com/pubsub/docs/reference/rest)
-- [OpenAPI](openapi/google-cloud-pubsub-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/google-cloud-pubsub.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/google-cloud-pubsub.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/google-cloud-pubsub-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [JSON Schema](json-schema/google-cloud-pubsub-topic-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [projects/{projectId}/schemas/{schemaId}](https://apis.io/channels/google-cloud-pubsub/projects-projectid-schemas-schemaid/)
+- [projects/{projectId}/subscriptions/{subscriptionId}:bigquery](https://apis.io/channels/google-cloud-pubsub/projects-projectid-subscriptions-subscriptionid-bigquery/)
+- [projects/{projectId}/subscriptions/{subscriptionId}:cloudstorage](https://apis.io/channels/google-cloud-pubsub/projects-projectid-subscriptions-subscriptionid-cloudstorage/)
+- [projects/{projectId}/subscriptions/{subscriptionId}:pull](https://apis.io/channels/google-cloud-pubsub/projects-projectid-subscriptions-subscriptionid-pull/)
+- [projects/{projectId}/topics/{topicId}](https://apis.io/channels/google-cloud-pubsub/projects-projectid-topics-topicid/)
+- [{pushEndpoint}](https://apis.io/channels/google-cloud-pubsub/pushendpoint/)
 
-## Common Properties
+#### Agentic access (1)
 
-- [GitHub Organization](https://github.com/GoogleCloudPlatform)
-- [Getting Started](https://cloud.google.com/pubsub/docs/quickstarts)
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Google Cloud Pubsub Agentic Access](https://apis.io/agentic-access/google-cloud-pubsub/google-cloud-pubsub-agentic-access/)
+
+#### JSON Schema (1)
+
+The data models the API reads and writes.
+
+- [Google Cloud Pub/Sub Topic](https://apis.io/schemas/google-cloud-pubsub/google-cloud-pubsub-topic/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Google Cloud Pubsub Context](https://apis.io/jsonld/google-cloud-pubsub/google-cloud-pubsub-context/)
+
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [Google Cloud Pub/Sub API](https://apis.io/collections/google-cloud-pubsub/open-google-cloud-pubsub/)
+- [Google Cloud Pub/Sub Schemas API](https://apis.io/collections/google-cloud-pubsub/open-google-cloud-pubsub-schemas-api/)
+- [Google Cloud Pub/Sub Schemas Subscriptions API](https://apis.io/collections/google-cloud-pubsub/open-google-cloud-pubsub-subscriptions-api/)
+- [Google Cloud Pub/Sub Schemas Topics API](https://apis.io/collections/google-cloud-pubsub/open-google-cloud-pubsub-topics-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Google Cloud Pub/Sub — asyncapi rules](https://apis.io/rules/google-cloud-pubsub/google-cloud-pubsub-asyncapi-spectral-rules/)
+- [Google Cloud Pub/Sub — jsonschema rules](https://apis.io/rules/google-cloud-pubsub/google-cloud-pubsub-jsonschema-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Google Cloud Pubsub Authentication](https://apis.io/security/google-cloud-pubsub/google-cloud-pubsub-authentication/)
+- [Google Cloud Pubsub Domain Security](https://apis.io/security/google-cloud-pubsub/google-cloud-pubsub-domain-security/)
+- [Google Cloud Pubsub Vulnerability Disclosure](https://apis.io/security/google-cloud-pubsub/google-cloud-pubsub-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Google Cloud Pubsub Scopes](https://apis.io/scopes/google-cloud-pubsub/google-cloud-pubsub-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Google Cloud Pubsub Plans Pricing](https://apis.io/plans/google-cloud-pubsub/google-cloud-pubsub-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Google Cloud Pubsub Rate Limits](https://apis.io/rate-limits/google-cloud-pubsub/google-cloud-pubsub-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Google Cloud Pubsub Finops](https://apis.io/finops/google-cloud-pubsub/google-cloud-pubsub-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.google.com/)
+- [Getting started](https://cloud.google.com/pubsub/docs/quickstarts)
 - [Pricing](https://cloud.google.com/pubsub/pricing)
-- [JSON-LD](json-ld/google-cloud-pubsub-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Integrations](https://cloud.google.com/marketplace)
+- [GitHub](https://github.com/GoogleCloudPlatform)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 37.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 65.4 |
+| Contract governance | 13.6 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 33.3 |
+| Access clarity | 18.4 |
+
+**Agent readiness 24.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 32.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/google-cloud-pubsub/](https://apis.io/providers/google-cloud-pubsub/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Google Cloud Pub/Sub: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/google-cloud-pubsub/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
